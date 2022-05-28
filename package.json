@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "jsdom": "^19.0.0",
     "html-table-to-json": "v1.0.0",
-    "cheerio": "v1.0.0"
+    "cheerio": "v0.22.0"
   },
   "keywords": [
     "API otakudesu",
