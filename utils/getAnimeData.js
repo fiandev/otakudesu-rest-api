@@ -1,20 +1,23 @@
+import jsdom from "jsdom";
 import axios from "axios";
-import * as cheerio from "cheerio";
+const { JSDOM } = jsdom;
 
 const getAnimeData = ({ htmlCode }) => {
-  const $ = cheerio.load(htmlCode);
+  const { window } = new JSDOM(htmlCode);
+  const rseries = window.document.querySelectorAll(".rseries")
   let result = {}
   try {
-    $(".rseries").each(series => {
-      let seriesName = $(series).find(".rvad h1").text()
+    rseries.forEach(series => {
+      let posts = series.querySelectorAll(".detpost")
+      let seriesName = series.querySelector(".rvad h1").textContent
       result[seriesName] = []
-      $(".rseries .detpost").each((post, i) => {
-        let judulAnime = $(post).find(".jdlfilm").text()
-        let thumbnail = $(post).find(".wp-post-image").attr("src")
-        let episode = $(post).find(".epz").text()
-        let epztipe = $(post).find(".epztipe").text()
-        let dateRelease = $(post).find(".newnime").text()
-        let linkAnime = $(post).find(".thumb a").attr("href")
+      posts.forEach((post, i) => {
+        let judulAnime = post.querySelector(".jdlfilm").textContent
+        let thumbnail = post.querySelector(".wp-post-image").getAttribute("src")
+        let episode = post.querySelector(".epz").textContent
+        let epztipe = post.querySelector(".epztipe").textContent
+        let dateRelease = post.querySelector(".newnime").textContent
+        let linkAnime = post.querySelector(".thumb a").getAttribute("href")
         let dataAnime = {
           "judul": judulAnime,
           "thumbnail": thumbnail,
