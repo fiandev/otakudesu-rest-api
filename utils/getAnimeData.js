@@ -8,7 +8,7 @@ const getAnimeData = ({ htmlCode }) => {
   let result = {}
   try {
     rseries.forEach(series => {
-      let posts = rseries.querySelectorAll(".detpost")
+      let posts = series.querySelectorAll(".detpost")
       let seriesName = series.querySelector(".rvad h1").textContent
       result[seriesName] = []
       posts.forEach((post, i) => {
