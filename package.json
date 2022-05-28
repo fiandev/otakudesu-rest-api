@@ -1,7 +1,7 @@
 {
-  "name": "lk21-api",
+  "name": "otakudesu-rest-api",
   "version": "1.0.0",
-  "description": "API Untuk mengambil data-data movie LK21",
+  "description": "API Untuk mengambil data-data anime otakudesu",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -17,9 +17,9 @@
     "html-table-to-json": "v1.0.0"
   },
   "keywords": [
-    "API LK21",
-    "API Movie Indonesia",
-    "API data Layar kaca 21"
+    "API otakudesu",
+    "API anime sub Indonesia",
+    "API data otakudesu"
   ],
   "imports": {
     "#routes/*": "./routes/*.js",

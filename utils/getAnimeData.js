@@ -5,10 +5,10 @@ const { JSDOM } = jsdom;
 const getAnimeData = ({ htmlCode }) => {
   const { window } = new JSDOM(htmlCode);
   const rseries = window.document.querySelectorAll(".rseries")
-  const posts = rseries.querySelectorAll(".detpost")
   let result = {}
   try {
     rseries.forEach(series => {
+      let posts = rseries.querySelectorAll(".detpost")
       let seriesName = series.querySelector(".rvad h1").textContent
       result[seriesName] = []
       posts.forEach((post, i) => {
