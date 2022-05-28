@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-const { JSDOM } = jsdom;
 
 const getAnimeData = ({ htmlCode }) => {
   const $ = cheerio.load(htmlCode);
