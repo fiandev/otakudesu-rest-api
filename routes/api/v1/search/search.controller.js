@@ -10,7 +10,7 @@ export const index = async (req, res) => {
     const homePage = await api(`/?s=${req.query.q}&post_type=anime`);
     htmlCode = homePage.data;
     const { result } = getAnimeDataSearch({ htmlCode });
-    if (!result) {
+    if (result.length == 0) {
       res.json({
         status: 404,
         message: "not found!",
