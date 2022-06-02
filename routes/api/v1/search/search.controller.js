@@ -10,10 +10,11 @@ export const index = async (req, res) => {
     const homePage = await api(`/?s=${req.query.q}&post_type=anime`);
     htmlCode = homePage.data;
     const { result } = getAnimeDataSearch({ htmlCode });
-    if (result == false) {
+    if (!result) {
       res.json({
         status: 404,
         message: "not found!",
+        query: req.query.q,
         author: author,
         date: date
       });
@@ -32,11 +33,13 @@ export const index = async (req, res) => {
     
     const homePage = await api(`/genres/${genre}`);
     htmlCode = homePage.data;
-    const { result, totalPage } = getSearchAnimeByGenre({ htmlCode });
-    if (result == false) {
+    const { result, totalPage } = await getSearchAnimeByGenre({ htmlCode });
+    //process.exit()
+    if (!result) {
       res.json({
         status: 404,
         message: "not found!",
+        query: req.query.genre,
         author: author,
         date: date
       });
